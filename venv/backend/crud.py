@@ -24,6 +24,12 @@ def create_user(db: Session, user: schemas.CreateUser):
     db.refresh(db_user)
     return db_user
 
+def delete_user(db: Session, user_id: int):
+    db_user = db.get(models.User, user_id)
+    db.delete(db_user)
+    db.commit()
+    return db_user
+
 # ------------------------------------------------------------#
 # ------------------------------------------------------------#
 # ---------------------- TASK METHODS ------------------------#
